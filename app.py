@@ -1,6 +1,17 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import plotly.figure_factory as ff
+
+
+@st.cache_data
+def load_data():
+    return pd.DataFrame(np.random.randint(0, 100, size=(100, 4)), columns=list("ABCD"))
+
+
+my_data = load_data()
+
+st.data_editor(my_data)
 
 # Add histogram data
 x1 = np.random.randn(200) - 2
